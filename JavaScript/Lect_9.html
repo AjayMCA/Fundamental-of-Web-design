@@ -1,0 +1,127 @@
+<!-- Registration Form Validation -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registration Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #eef2f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .reg-box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        width: 350px;
+      }
+
+      .reg-box h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: -5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reg-box">
+      <h2>Register</h2>
+      <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Full Name" />
+        <div class="error" id="nameError"></div>
+
+        <input type="email" id="email" placeholder="Email" />
+        <div class="error" id="emailError"></div>
+
+        <input type="password" id="password" placeholder="Password" />
+        <div class="error" id="passError"></div>
+
+        <input type="password" id="confirm" placeholder="Confirm Password" />
+        <div class="error" id="confirmError"></div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        // Clear all error messages
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("passError").textContent = "";
+        document.getElementById("confirmError").textContent = "";
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirm = document.getElementById("confirm").value;
+
+        let valid = true;
+
+        if (name === "") {
+          document.getElementById("nameError").textContent =
+            "Name is required.";
+          valid = false;
+        }
+
+        // Basic email validation
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (email === "") {
+          document.getElementById("emailError").textContent =
+            "Email is required.";
+          valid = false;
+        } else if (!emailPattern.test(email)) {
+          document.getElementById("emailError").textContent =
+            "Invalid email format.";
+          valid = false;
+        }
+
+        if (password.length < 6) {
+          document.getElementById("passError").textContent =
+            "Password must be at least 6 characters.";
+          valid = false;
+        }
+
+        if (password !== confirm) {
+          document.getElementById("confirmError").textContent =
+            "Passwords do not match.";
+          valid = false;
+        }
+
+        if (valid) {
+          alert("Registration Successful!");
+        }
+
+        return valid;
+      }
+    </script>
+  </body>
+</html>

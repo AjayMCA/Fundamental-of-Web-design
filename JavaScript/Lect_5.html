@@ -1,0 +1,22 @@
+<!-- Show Date & Time -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Show Date & Time</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <button onclick="showDate()">Show Date & Time</button>
+      <p id="datetime"></p>
+      <script>
+        function showDate() {
+          document.getElementById("datetime").innerText = new Date();
+        }
+      </script>
+    </div>
+  </body>
+</html>

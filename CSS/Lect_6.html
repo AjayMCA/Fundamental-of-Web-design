@@ -1,0 +1,25 @@
+<!-- Responsive layout using media queries -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RWP</title>
+  </head>
+  <body>
+    <div class="responsive-box">Resize the window</div>
+    <style>
+      .responsive-box {
+        width: 97%;
+        background-color: lightcoral;
+        text-align: center;
+        padding: 20px;
+      }
+      @media (max-width: 600px) {
+        .responsive-box {
+          background-color: lightblue;
+        }
+      }
+    </style>
+  </body>
+</html>
